@@ -1,0 +1,31 @@
+syntax = "proto3"; // 声明了protobuf的版本
+option go_package = "./proto_msg";
+
+message BaseMsg {
+    MonitorType type = 1;
+}
+
+enum MonitorType {
+     REGISTER = 0;
+     RESPONSE = 1;
+     HELLO = 2;
+     ROLEUPDATE = 3;
+ }
+
+message RegisterRequest{
+    MonitorType type = 1;
+    int32 pid = 2;
+}
+
+message RegisterResponse {
+    MonitorType type = 1;
+    int32 pid = 2;
+    int32 worker_id = 3;
+    string role = 4;
+}
+
+message HeartHello {
+    MonitorType type = 1;
+    int32 worker_id = 2;
+}
+
